@@ -28,11 +28,12 @@
                         'not_editable' => isset($not_editable),
                     )) ?>
                 <?php endif ?>
-
+		<?php if ($index === 0): ?>
                 <?= $this->render('board/table_column', array(
                     'swimlane' => $swimlane,
                     'not_editable' => isset($not_editable),
                 )) ?>
+		<?php endif ?>
 
                 <?php if ($index === 0 && $swimlane['nb_swimlanes'] > 1): ?>
                     <?= $this->render('board/table_swimlane', array(
