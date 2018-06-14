@@ -16,14 +16,12 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     rm -rf /var/www/localhost && \
     rm -f /etc/php7/php-fpm.d/www.conf
-
+COPY ./kanboard.zip /tmp/
 RUN cd /tmp \
-    && curl -sL -o kb.zip https://github.com/kanboard/kanboard/archive/$VERSION.zip \
-    && unzip -qq kb.zip \
-    && cd kanboard-* \
+    && unzip -qq kanboard.zip \
     && cp -R . /var/www/app \
     && cd /tmp \
-    && rm -rf /tmp/kanboard-* /tmp/*.zip
+    && rm -rf /tmp/kanboard /tmp/*.zip
 
 ADD docker/ /
 
