@@ -1,5 +1,5 @@
 <?php if (! empty($task['category_id'])): ?>
-<div style="display:inline-block" class="task-board-category-container task-board-category-container-color">
+<div class="task-board-category-container task-board-category-container-color">
     <span class="task-board-category category-<?= $this->text->e($task['category_name']) ?>">
         <?php if ($not_editable): ?>
             <?= $this->text->e($task['category_name']) ?>
@@ -31,7 +31,7 @@
     </div>
 <?php endif ?>
 
-<div class="task-board-icons">
+<div style="display:inline-block" class="task-board-icons">
     <div class="task-board-icons-row">
         <?php if ($task['reference']): ?>
             <span class="task-board-reference" title="<?= t('Reference') ?>">
