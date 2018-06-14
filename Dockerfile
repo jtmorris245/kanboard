@@ -18,8 +18,8 @@ RUN apk update && \
     rm -f /etc/php7/php-fpm.d/www.conf
 COPY ./kanboard.zip /tmp/
 RUN cd /tmp \
-    && unzip -qq kanboard.zip \
-    && cp -R . /var/www/app \
+    && unzip -u -qq kanboard.zip \
+    && cp -u -R . /var/www/app \
     && cd /tmp \
     && rm -rf /tmp/kanboard /tmp/*.zip
 

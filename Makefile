@@ -1,7 +1,14 @@
 all: static
 
+dev: 	docker-image
+	@ docker-compose up
+
+push:	docker-image
+	@ docker push jtm/kanboard-jcm
+
 clean:
 	@ rm -rf ./node_modules ./bower_components
+	@ rm -f kanboard.zip
 
 static: clean
 	@ npm install
@@ -13,8 +20,8 @@ jshint:
 	@ ./node_modules/.bin/jshint assets/js/{core,components,polyfills}
 
 archive:
-	@ echo "Build archive: version=${version}, destination=${dst}"
-	@ git archive --format=zip --prefix=kanboard/ ${version} -o ${dst}/kanboard-${version}.zip
+	@ echo "Build archive"
+	@ git archive --format=zip HEAD -o ./kanboard.zip
 
 test-sqlite-coverage:
 	@ ./vendor/bin/phpunit --coverage-html /tmp/coverage --whitelist app/ -c tests/units.sqlite.xml
@@ -72,7 +79,7 @@ sql:
 
 	@ grep -v "SET idle_in_transaction_session_timeout = 0;" app/Schema/Sql/postgres.sql > temp && mv temp app/Schema/Sql/postgres.sql
 
-docker-image:
+docker-image: archive
 	@ IMAGE_NAME=jtm245/kanboard-jcm:latest ./hooks/build
 
 .PHONY: all
