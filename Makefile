@@ -73,6 +73,6 @@ sql:
 	@ grep -v "SET idle_in_transaction_session_timeout = 0;" app/Schema/Sql/postgres.sql > temp && mv temp app/Schema/Sql/postgres.sql
 
 docker-image:
-	@ IMAGE_NAME=kanboard/kanboard:latest ./hooks/build
+	@ IMAGE_NAME=jtm245/kanboard-jcm:latest ./hooks/build
 
 .PHONY: all
