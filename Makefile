@@ -4,7 +4,7 @@ dev: 	docker-image
 	@ docker-compose up
 
 push:	docker-image
-	@ docker push jtm/kanboard-jcm
+	@ docker push jtm245/kanboard-jcm
 
 clean:
 	@ rm -rf ./node_modules ./bower_components
@@ -80,6 +80,6 @@ sql:
 	@ grep -v "SET idle_in_transaction_session_timeout = 0;" app/Schema/Sql/postgres.sql > temp && mv temp app/Schema/Sql/postgres.sql
 
 docker-image: archive
-	@ IMAGE_NAME=jtm245/kanboard-jcm:latest ./hooks/build
+	@ IMAGE_NAME=jtm245/kanboard-jcm ./hooks/build
 
 .PHONY: all
