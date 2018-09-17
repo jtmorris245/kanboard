@@ -12,4 +12,4 @@ fi
 
 echo "Building $VERSION"
 
-docker build --no-cache --build-arg VERSION=$VERSION -t $IMAGE_NAME .
+docker build --build-arg VERSION=$VERSION -t $IMAGE_NAME .
