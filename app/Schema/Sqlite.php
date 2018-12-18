@@ -10,6 +10,11 @@ use PDO;
 
 const VERSION = 120;
 
+function version_121(PDO $pdo)
+{
+   $pdo->exec('SET LOCK MODE TO WAIT 120');
+}
+
 function version_120(PDO $pdo)
 {
     $pdo->exec('ALTER TABLE tags ADD COLUMN color_id TEXT DEFAULT NULL');

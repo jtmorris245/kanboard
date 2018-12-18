@@ -1,18 +1,17 @@
 version: '2'
 services:
   kanboard:
-    image: jtm245/kanboard-jcm:latest
+    image: jtm245/kanboard-jcm:dev
     ports:
-     - "80:80"
-     - "443:443"
+     - "8000:80"
     volumes:
-     - kanboard_data:/var/www/app/data
-     - kanboard_plugins:/var/www/app/plugins
-     - kanboard_ssl:/etc/nginx/ssl
+     - kanboard_datadev:/var/www/app/data
+     - kanboard_pluginsdev:/var/www/app/plugins
+     - kanboard_ssldev:/etc/nginx/ssl
 volumes:
-  kanboard_data:
+  kanboard_datadev:
     driver: local
-  kanboard_plugins:
+  kanboard_pluginsdev:
     driver: local
-  kanboard_ssl:
+  kanboard_ssldev:
     driver: local
